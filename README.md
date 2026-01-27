@@ -1,4 +1,2 @@
-Github Repo for CS 6501 - Workshop on Building AI Agents
-
-Proffessor Kautz
-Prithvi Raj
+# AI-Agents
+CS 6501 - AI Agents
