@@ -43,3 +43,5 @@ node_modules/
 # Secrets
 *.pem
 *.key
+
+HUGGINGFACEACCESSTOKEN

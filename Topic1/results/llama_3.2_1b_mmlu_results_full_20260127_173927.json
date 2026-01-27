@@ -1,0 +1,39 @@
+{
+  "model": "meta-llama/Llama-3.2-1B-Instruct",
+  "quantization_bits": null,
+  "real_time_seconds": 127.4504,
+  "cpu_time_seconds": 135.68113599999998,
+  "gpu_time_seconds": 0.0,
+  "timestamp": "20260127_173927",
+  "device": "cpu",
+  "duration_seconds": 127.4504,
+  "overall_accuracy": 42.71047227926078,
+  "total_correct": 208,
+  "total_questions": 487,
+  "subject_results": [
+    {
+      "subject": "abstract_algebra",
+      "correct": 23,
+      "total": 100,
+      "accuracy": 23.0
+    },
+    {
+      "subject": "anatomy",
+      "correct": 65,
+      "total": 135,
+      "accuracy": 48.148148148148145
+    },
+    {
+      "subject": "astronomy",
+      "correct": 75,
+      "total": 152,
+      "accuracy": 49.34210526315789
+    },
+    {
+      "subject": "business_ethics",
+      "correct": 45,
+      "total": 100,
+      "accuracy": 45.0
+    }
+  ]
+}

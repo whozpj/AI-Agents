@@ -1,0 +1,63 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B",
+  "quantization_bits": null,
+  "real_time_seconds": 53.761218,
+  "cpu_time_seconds": 31.691819999999996,
+  "gpu_time_seconds": 0.0,
+  "timestamp": "20260127_181519",
+  "device": "mps",
+  "duration_seconds": 53.761218,
+  "overall_accuracy": 43.79562043795621,
+  "total_correct": 480,
+  "total_questions": 1096,
+  "subject_results": [
+    {
+      "subject": "abstract_algebra",
+      "correct": 33,
+      "total": 100,
+      "accuracy": 33.0
+    },
+    {
+      "subject": "anatomy",
+      "correct": 61,
+      "total": 135,
+      "accuracy": 45.18518518518518
+    },
+    {
+      "subject": "astronomy",
+      "correct": 77,
+      "total": 152,
+      "accuracy": 50.6578947368421
+    },
+    {
+      "subject": "business_ethics",
+      "correct": 46,
+      "total": 100,
+      "accuracy": 46.0
+    },
+    {
+      "subject": "clinical_knowledge",
+      "correct": 139,
+      "total": 265,
+      "accuracy": 52.45283018867924
+    },
+    {
+      "subject": "college_biology",
+      "correct": 54,
+      "total": 144,
+      "accuracy": 37.5
+    },
+    {
+      "subject": "college_chemistry",
+      "correct": 32,
+      "total": 100,
+      "accuracy": 32.0
+    },
+    {
+      "subject": "college_computer_science",
+      "correct": 38,
+      "total": 100,
+      "accuracy": 38.0
+    }
+  ]
+}
