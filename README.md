@@ -1,2 +1,5 @@
 # AI-Agents
-CS 6501 - AI Agents
+CS 6501 - Workshop on Building AI Agents
+
+Prithvi Raj
+Proffessor Henry Kautz
