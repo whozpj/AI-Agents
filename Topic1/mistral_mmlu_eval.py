@@ -252,7 +252,7 @@ def get_quantization_config():
 def parse_launch_args():
     """Parse command-line arguments and return configuration values.
 
-    Returns: (model_name, use_gpu, max_new_tokens, quantization_bits)
+    Returns: (model_name, use_gpu, max_new_tokens, quantization_bits, print_answers)
     """
     parser = argparse.ArgumentParser(description="Llama MMLU evaluation (launch arguments)")
 
@@ -467,7 +467,7 @@ def evaluate_subject(model, tokenizer, subject):
 def main():
     """Main evaluation function"""
     print("\n" + "="*70)
-    print("Qwen/Qwen2.5-0.5B (Quantized)")
+    print("Mistral-7B-Instruct-v0.3 MMLU Evaluation")
     print("="*70 + "\n")
 
     # Parse launch arguments and override configuration defaults

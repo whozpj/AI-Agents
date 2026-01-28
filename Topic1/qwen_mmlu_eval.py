@@ -253,7 +253,7 @@ def get_quantization_config():
 def parse_launch_args():
     """Parse command-line arguments and return configuration values.
 
-    Returns: (model_name, use_gpu, max_new_tokens, quantization_bits)
+    Returns: (model_name, use_gpu, max_new_tokens, quantization_bits, print_answers)
     """
     parser = argparse.ArgumentParser(description="Llama MMLU evaluation (launch arguments)")
 
