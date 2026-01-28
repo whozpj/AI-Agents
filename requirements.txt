@@ -5,3 +5,9 @@ accelerate
 tqdm 
 huggingface_hub 
 bitsandbytes
+matplotlib 
+seaborn 
+numpy
+langchain-huggingface
+langgraph
+grandalf
