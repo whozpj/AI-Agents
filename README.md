@@ -2,4 +2,5 @@
 CS 6501 - Workshop on Building AI Agents
 
 Prithvi Raj
-Proffessor Henry Kautz
+Proffessor Kautz
+
