@@ -243,8 +243,13 @@ def create_graph(llm):
             - "call_llm": If user provided any input (including empty)
         """
         # Check if user wants to exit
+
+
         if state.get("should_exit", False):
             return END
+        
+        if state.get("user_input") == "":
+            return "get_user_input"
 
         # Default: Proceed to LLM (even for empty input)
         return "call_llm"
@@ -271,7 +276,8 @@ def create_graph(llm):
         route_after_input,      # Routing function that examines state
         {
             "call_llm": "call_llm",  # Any input -> proceed to LLM
-            END: END                  # Quit command -> terminate graph
+            END: END,                  # Quit command -> terminate graph
+            "get_user_input": "get_user_input"  # Loop back for next input
         }
     )
 
