@@ -492,57 +492,44 @@ def save_graph_image(graph, filename="lg_graph.png"):
         print(f"Could not save graph image: {e}")
         print("You may need to install additional dependencies: pip install grandalf")
 
+import os
+from langgraph.graph import StateGraph
+
+CHECKPOINT_FILE = "agent_checkpoint.json"
+
 def main():
-    """
-    Main function that orchestrates the simple agent workflow:
-    1. Initialize the LLM
-    2. Create the LangGraph
-    3. Save the graph visualization
-    4. Run the graph once (it loops internally until user quits)
-
-    The graph handles all looping internally through its edge structure:
-    - get_user_input: Prompts and reads from stdin
-    - call_llm: Processes input through the LLM
-    - print_response: Outputs the response, then loops back to get_user_input
-
-    The graph only terminates when the user types 'quit', 'exit', or 'q'.
-    """
     print("=" * 50)
-    print("LangGraph Simple Agent with Llama-3.2-1B-Instruct")
+    print("LangGraph Multi-Agent Chat with Crash Recovery")
     print("=" * 50)
-    print()
 
-    # Step 1: Create and configure the LLM
+    # Step 1: Initialize LLMs
     llama = create_llama()
     qwen = create_qwen()
 
-    # Step 2: Build the LangGraph with the LLM
-    print("\nCreating LangGraph...")
+    # Step 2: Build the LangGraph
     graph = create_graph(llama, qwen)
-    print("Graph created successfully!")
 
-    # Step 3: Save a visual representation of the graph before execution
-    # This happens BEFORE any graph execution, showing the graph structure
-    print("\nSaving graph visualization...")
+    # Step 3: Save a visualization
     save_graph_image(graph)
 
-    # Step 4: Run the graph - it will loop internally until user quits
-    # Create initial state with empty/default values
-    # The graph will loop continuously, updating state as it goes:
-    #   - get_user_input displays banner, populates user_input and should_exit
-    #   - call_llm populates llama_response
-    #   - print_response displays output, then loops back to get_user_input
-    initial_state: AgentState = {
-        "user_input": "",
-        "should_exit": False,
-        "llama_output": "",
-        "qwen_output": "",
-        "messages": []
-    }
+    # Step 4: Prepare initial state
+    if os.path.exists(CHECKPOINT_FILE):
+        print(f"Loading previous checkpoint from {CHECKPOINT_FILE}...")
+        initial_state = graph.load_checkpoint(CHECKPOINT_FILE)
+    else:
+        initial_state = {
+            "user_input": "",
+            "should_exit": False,
+            "llama_output": "",
+            "qwen_output": "",
+            "messages": []
+        }
 
-    # Single invocation - the graph loops internally via print_response -> get_user_input
-    # The graph only exits when route_after_input returns END (user typed quit/exit/q)
-    graph.invoke(initial_state)
+    # Step 5: Run the graph with checkpointing enabled
+    # We'll automatically save state after each node
+    graph.invoke(initial_state, checkpoint_file=CHECKPOINT_FILE)
+    print("Session ended. Checkpoint saved!")
+
 
 # Entry point - only run main() if this script is executed directly
 if __name__ == "__main__":
