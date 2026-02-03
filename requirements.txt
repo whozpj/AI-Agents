@@ -12,3 +12,5 @@ langchain-huggingface
 langgraph
 grandalf
 huggingface_hub
+ollama
+requests
