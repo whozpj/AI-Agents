@@ -12,9 +12,9 @@ MODEL_NAME = "Qwen2.5-0.5B"
 3. (Using CPU and 4-bit quantization.) - 101.54675s
 
 MODEL_NAME = "Mistral-7B-Instruct-v0.3"
-1. (Using GPU and no quantization.) - 
-2. (Using CPU and no quantization.) -
-3. (Using CPU and 4-bit quantization.) - 
+1. (Using GPU and no quantization.) - 5:12.847
+2. (Using CPU and no quantization.) - 18:47.392
+3. (Using CPU and 4-bit quantization.) - 10:34.615
 
 
 
