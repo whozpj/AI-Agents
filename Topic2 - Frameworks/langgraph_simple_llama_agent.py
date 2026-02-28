@@ -67,6 +67,7 @@ class AgentState(TypedDict):
     llama_output: str
     qwen_output: str
     messages: list  # List of message dicts with 'role' and 'content', with prefixes for Human, Llama, Qwen
+    verbose_mode: bool
 
 def create_llama():
     """
@@ -204,32 +205,57 @@ def create_graph(llama, qwen):
 
         print("\n> ", end="")
         user_input = input()
-
-        # Prepare new messages list (copy previous or start new)
         messages = state.get("messages", []).copy() if state.get("messages") else []
+        verbose_mode = state.get("verbose_mode", False)
 
-        # Check if user wants to exit
+        # Toggle verbose/quiet
+        if user_input.lower() == "verbose":
+            print("Verbose mode ON")
+            return {
+                "user_input": "",
+                "should_exit": False,
+                "messages": messages,
+                "verbose_mode": True
+            }
+        if user_input.lower() == "quiet":
+            print("Verbose mode OFF")
+            return {
+                "user_input": "",
+                "should_exit": False,
+                "messages": messages,
+                "verbose_mode": False
+            }
         if user_input.lower() in ['quit', 'exit', 'q']:
             print("Goodbye!")
             messages.append({"role": "user", "content": f"Human: {user_input}"})
             return {
                 "user_input": user_input,
-                "should_exit": True,        # Signal to exit the graph
-                "messages": messages
+                "should_exit": True,
+                "messages": messages,
+                "verbose_mode": verbose_mode
             }
-
-        # Append human message to history with prefix
+        # Ignore empty input, loop back
+        if user_input == "":
+            if verbose_mode:
+                print("[TRACE] Empty input received, looping back to get_user_input.")
+            return {
+                "user_input": "",
+                "should_exit": False,
+                "messages": messages,
+                "verbose_mode": verbose_mode
+            }
         messages.append({"role": "user", "content": f"Human: {user_input}"})
-
-        # Any input (including empty) - continue to LLM
         return {
             "user_input": user_input,
-            "should_exit": False,           # Signal to proceed to LLM
-            "messages": messages
+            "should_exit": False,
+            "messages": messages,
+            "verbose_mode": verbose_mode
         }
 
 
     def dispatch(state: AgentState) -> dict:
+        if state.get("verbose_mode", False):
+            print("[TRACE] dispatch node called")
         return {}
 
 
@@ -246,6 +272,8 @@ def create_graph(llama, qwen):
     #   - should_continue: Unchanged (read only)
     #   - llm_response: Set to the LLM's generated response
     def call_llama(state: AgentState) -> dict:
+        if state.get("verbose_mode", False):
+            print("[TRACE] call_llama node called")
         """
         Node that invokes the LLM with the user's input.
 
@@ -284,6 +312,8 @@ def create_graph(llama, qwen):
         return {"llama_output": f"Llama: {response}"}
 
     def call_qwen(state: AgentState) -> dict:
+        if state.get("verbose_mode", False):
+            print("[TRACE] call_qwen node called")
         """
         Node that invokes the LLM with the user's input.
 
@@ -333,15 +363,17 @@ def create_graph(llama, qwen):
     # State changes:
     #   - No changes (this node only reads state, doesn't modify it)
     def print_response(state: AgentState) -> dict:
+        if state.get("verbose_mode", False):
+            print("[TRACE] print_response node called")
         print("\n=== LLaMA Output ===")
-        print(state["llama_output"])
-
+        print(state.get("llama_output", ""))
         print("\n=== Qwen Output ===")
-        print(state["qwen_output"])
-
+        print(state.get("qwen_output", ""))
         return {}
 
     def join_responses(state: AgentState) -> dict:
+        if state.get("verbose_mode", False):
+            print("[TRACE] join_responses node called")
         # Only proceed if both outputs exist
         if not state.get("llama_output") or not state.get("qwen_output"):
             # Returning None will tell LangGraph to wait for the other input
@@ -388,10 +420,8 @@ def create_graph(llama, qwen):
 
         if state.get("should_exit", False):
             return END
-        
         if state.get("user_input") == "":
-            return "get_user_input"
-
+            return "get_user_input"  # Loop back for empty input
         # Default: Proceed to LLM (even for empty input)
         return "dispatch"
 

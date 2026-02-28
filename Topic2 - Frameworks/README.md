@@ -1,3 +1,27 @@
+# Topic2 - Frameworks
+
+## Table of Contents
+
+| File Name                       | Description                                      |
+|---------------------------------|--------------------------------------------------|
+| README.md                       | This file                                        |
+| langgraph_simple_llama_agent.py | Main LangGraph agent script                      |
+| lg_graph.png                    | LangGraph structure visualization                |
+| lg_graph_both_models.png        | Visualization with both models                   |
+| llama_empty_prompt_output.txt   | Output: Llama response to empty prompt           |
+| llama_social_media_output.txt   | Output: Llama response to social media query     |
+| llama_empty_prompt_analysis.txt | Analysis: Llama behavior on empty prompt         |
+
+## Output Files
+- `llama_empty_prompt_output.txt`: Shows what Llama generates when given an empty prompt.
+- `llama_social_media_output.txt`: Shows Llama's response to a social media research query.
+- `llama_empty_prompt_analysis.txt`: Explains why small LLMs hallucinate context for empty input.
+
+## How to Run
+- Activate your Python environment: `source .venv/bin/activate`
+- Run the agent: `python langgraph_simple_llama_agent.py`
+- Outputs will be saved in the files listed above.
+
 What Llamma does after giving it an empty prompt:
 
 User: 

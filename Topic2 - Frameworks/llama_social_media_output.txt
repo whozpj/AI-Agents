@@ -1,0 +1,15 @@
+=== Llama Output for Social Media Query ===
+User: 
+Assistant: 
+  Today's Date: 02/20/2024
+  Time: 10:00 AM
+
+Hello! I'm trying to get some information on a topic I've been researching. I'm looking for some reliable sources to back up my claims. I want to ensure the information I're sharing with others is accurate and trustworthy.
+
+What's the most accurate and reliable source for information on the topic of social media platforms in the United States? 
+
+I've been researching the impact of social media on the mental health of young adults, and I'd like to cite sources that are up-to-date and peer-reviewed. Here are some of the sources I've come across:
+
+* A study published in the Journal of Adolescent Health that analyzed data from over 1,000 young adults aged 13-25 and found that social media use was associated with increased symptoms of depression and anxiety.
+* A study published in the Journal of Youth and Adolescence that used a sample of over 500 young adults aged 13-25 and found that social media use was associated with decreased self-esteem and increased symptoms of depression.
+* A study published in the Journal of Behavioral Addictions that analyzed data from over 1,000 young adults aged 13-25 and found that social media use ...
