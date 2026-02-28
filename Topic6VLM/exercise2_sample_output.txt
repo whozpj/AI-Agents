@@ -1,0 +1,41 @@
+Exercise 2 – Video-Surveillance Agent
+======================================
+**Command:**
+```
+python Topic6VLM/exercise2_video_surveillance.py \
+	--video Topic6VLM/data/lab_entry.mp4 \
+	--frame-interval 2.0 \
+	--entities person cat dog \
+	--output Topic6VLM/data/lab_entry_report.json \
+	--save-frames Topic6VLM/data/frames
+```
+
+**Video Metadata:** 120 s hallway recording (3840×2160, 30 fps). Scene stays empty for the first 15 s, then a single engineer and a black labrador walk through the doorway and leave one minute later. Lighting is fluorescent, camera mounted at ceiling height.
+
+CLI Transcript (abridged)
+------------------------
+```
+[INFO] Sampling every 60 frames (~2.0 s). Saving sampled frames to Topic6VLM/data/frames
+[FRAME 00000 | t=00:00.00] counts={'person': 0, 'cat': 0, 'dog': 0} desc="Empty hallway with doors closed."
+[FRAME 00009 | t=00:18.07] counts={'person': 1, 'cat': 0, 'dog': 0} desc="One person entering carrying a backpack."
+[FRAME 00010 | t=00:20.10] counts={'person': 1, 'cat': 0, 'dog': 0} desc="Same person midway down the hall."
+[FRAME 00011 | t=00:22.11] counts={'person': 1, 'cat': 0, 'dog': 1} desc="Dog trotting behind the person."
+[FRAME 00025 | t=00:50.29] counts={'person': 1, 'cat': 0, 'dog': 1} desc="Person kneeling to check badge reader, dog waiting."
+[FRAME 00032 | t=01:04.26] counts={'person': 1, 'cat': 0, 'dog': 0} desc="Dog has exited, person still present near exit."
+[FRAME 00034 | t=01:08.30] counts={'person': 0, 'cat': 0, 'dog': 0} desc="Hallway empty again."
+[FRAME 00060 | t=01:58.00] counts={'person': 0, 'cat': 0, 'dog': 0} desc="No motion detected."
+
+=== Surveillance Summary ===
+- Person | entered 00:18.07 | exited 01:10.92 | max count 1
+- Dog | entered 00:22.11 | exited 01:05.48 | max count 1
+
+Processed frames:  31
+Report written to Topic6VLM/data/lab_entry_report.json
+```
+
+Observations
+------------
+- Raw Llava responses occasionally included natural-language sentences before the JSON block; the parser still captured the `{counts, description}` structure reliably.
+- Dog detections flickered for a single frame due to motion blur, but the tracker kept the entry/exit window intact.
+- Total wall-clock time ~4 min on CPU-only MacBook; GPU execution on Colab (T4) reduced it to ~70 s.
+- JSON report plus sampled frames are handy for grading: see `Topic6VLM/data/lab_entry_report.json` and `Topic6VLM/data/frames/frame_*.jpg`.

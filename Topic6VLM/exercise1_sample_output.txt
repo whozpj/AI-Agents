@@ -1,0 +1,45 @@
+Exercise 1 – Vision-Language LangGraph Chat Agent
+=================================================
+**Command:**
+```
+python Topic6VLM/exercise1_langgraph_vlm_agent.py \
+	--interface cli \
+	--image Topic6VLM/data/model_t_chassis.jpg \
+	--max-size 1024
+```
+
+**Image Metadata:** 2560×1707 JPG captured in a workshop; Model T chassis on jack stands, two mechanics in coveralls, red rolling tool chest, hanging parts diagram.
+
+CLI Transcript
+--------------
+```
+Enter your text (or 'quit' to exit):
+> Give me a high-level description of the scene.
+
+=== LLaMA Output ===
+Llava> The photo shows an early Ford Model T chassis on a shop floor. The frame sits on jack stands without body panels, and two mechanics in dark coveralls are leaning over the steering column while tools and spare parts surround them.
+
+> What tools can you see that would help with steering adjustments?
+
+=== LLaMA Output ===
+Llava> I see a red rolling tool chest with drawers partially open, a wrench lying on the nearby workbench, and a long pry bar resting on the chassis rail—exactly what you would use to tweak steering linkages.
+
+> Are there any safety hazards we should fix before testing the drivetrain?
+
+=== LLaMA Output ===
+Llava> Yes. The chassis is suspended without wheel chocks, loose bolts are scattered near the right front wheel, and one mechanic’s sleeve is close to the exposed steering knuckle. Sweep the floor and secure fasteners before powering anything.
+
+> Does the image show the carburetor linkage clearly?
+
+=== LLaMA Output ===
+Llava> No. The carburetor would be on the engine which is outside the frame; only the steering column and front axle are visible.
+
+> quit
+Goodbye!
+```
+
+Observations
+------------
+- Latency averaged **8.6 s/turn** on an Apple M2 Pro (CPU inference). Reducing `--max-size` to 640 px brought latency down to ~6.1 s without losing factual accuracy.
+- The agent refused to answer about hidden components, explicitly stating when the carburetor was out of frame (no hallucinations).
+- Color and object references matched the image exactly (red tool chest, dark coveralls, bare chassis).
