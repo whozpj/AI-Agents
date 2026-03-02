@@ -1,0 +1,28 @@
+Script started on 2026-02-05 02:10:00+00:00
+================================================================================
+ToolNode Agent - Parallel Tool Dispatch Example
+================================================================================
+
+Commands:
+  - Type 'exit' to end the conversation
+  - Type 'verbose' to enable detailed tracing
+  - Type 'quiet' to disable detailed tracing
+
+Available tools:
+  - get_weather(location): Get weather information
+  - get_population(city): Get population data
+  - calculate(expression): Evaluate math expressions
+================================================================================
+
+[SYSTEM] Starting conversation...
+
+================================================================================
+NODE: input_node
+================================================================================
+You: exit
+[DEBUG] Exit command received
+[DEBUG] Routing to END (exit requested)
+
+[SYSTEM] Conversation ended. Goodbye!
+
+Script done on 2026-02-05 02:10:15+00:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,4 @@
+# Sample Output: Exercise 1
+Describe this image in English.
+Assistant: This is a photo of a Model T chassis on a shop floor with two mechanics, a tool cart, and hanging signage.
+... (multi-turn chat transcript)

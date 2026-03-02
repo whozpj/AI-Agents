@@ -1,0 +1,43 @@
+Script started on 2026-02-05 02:12:00+00:00
+================================================================================
+ToolNode Agent - Parallel Tool Dispatch Example
+================================================================================
+
+Commands:
+  - Type 'exit' to end the conversation
+  - Type 'verbose' to enable detailed tracing
+  - Type 'quiet' to disable detailed tracing
+
+Available tools:
+  - get_weather(location): Get weather information
+  - get_population(city): Get population data
+  - calculate(expression): Evaluate math expressions
+================================================================================
+
+[SYSTEM] Starting conversation...
+
+================================================================================
+NODE: input_node
+================================================================================
+You: verbose
+[SYSTEM] Verbose mode enabled
+[DEBUG] Routing back to input (verbose toggle)
+
+You: What is the population of Paris?
+[DEBUG] User input: What is the population of Paris?
+[DEBUG] Routing to dispatch
+
+================================================================================
+NODE: dispatch
+================================================================================
+[DEBUG] Dispatching tool calls in parallel
+[DEBUG] Tool calls: ['get_population']
+[DEBUG] Response preview: Population of Paris: Approximately 1 million people...
+
+================================================================================
+NODE: output_node
+================================================================================
+
+Assistant: Population of Paris: Approximately 1 million people
+
+Script done on 2026-02-05 02:13:00+00:00 [COMMAND_EXIT_CODE="0"]

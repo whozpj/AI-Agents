@@ -1,0 +1,3 @@
+# Sample Output: Exercise 2
+Entry/Exit times: [('entry', 18.0), ('exit', 70.0)]
+... (detection log)
