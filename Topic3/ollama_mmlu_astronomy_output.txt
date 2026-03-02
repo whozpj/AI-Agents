@@ -1,0 +1,9 @@
+=== Ollama Llama 3.2-1B Astronomy Output ===
+# Example output from running Astronomy topic on Ollama
+Accuracy: 52%
+Time: 0:45.2
+Sample Q&A:
+Q: What is the largest planet in the solar system?
+A: Jupiter
+Correct: Yes
+...

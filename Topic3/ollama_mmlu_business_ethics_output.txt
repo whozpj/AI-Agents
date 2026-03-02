@@ -1,0 +1,9 @@
+=== Ollama Llama 3.2-1B Business Ethics Output ===
+# Example output from running Business Ethics topic on Ollama
+Accuracy: 47%
+Time: 0:48.7
+Sample Q&A:
+Q: What is the primary purpose of a code of ethics in business?
+A: To guide employee behavior
+Correct: Yes
+...

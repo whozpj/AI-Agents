@@ -1,0 +1,18 @@
+=== Long Conversation Trace with Checkpointing ===
+User: How many s's in Mississippi riverboats?
+Tool: 4
+User: What is the square root of that?
+Tool: 2.0
+User: How many vowels?
+Tool: 8
+User: What is the sum of vowels and s's?
+Tool: 12
+User: What is the sin of the sum?
+Tool: 0.536
+[Checkpoint saved]
+User: What is the difference between vowels and s's?
+Tool: 4
+User: What is the cosine of the difference?
+Tool: -0.653
+[Checkpoint saved]
+...

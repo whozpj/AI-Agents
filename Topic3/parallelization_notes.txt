@@ -1,0 +1,2 @@
+# Parallelization Opportunities
+Further parallelization could be added in tool execution and response aggregation, especially when multiple tools are invoked in a single turn or when processing multiple user queries in batch. For example, if a question requires counting letters and calculating a function, both can be run in parallel before combining results.

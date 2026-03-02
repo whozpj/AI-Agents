@@ -1,0 +1,15 @@
+=== Multi-Tool Use Examples ===
+Q: Are there more i's than s's in Mississippi riverboats?
+A: There are 4 i's and 4 s's in "Mississippi riverboats". So, they are equal.
+
+Q: What is the sin of the difference between the number of i's and s's in Mississippi riverboats?
+A: The difference is 0. sin(0) = 0.
+
+Q: How many vowels are in Mississippi riverboats?
+A: There are 8 vowels in "Mississippi riverboats".
+
+Q: What is the square root of the number of vowels in Mississippi riverboats?
+A: sqrt(8) ≈ 2.83
+
+Q: What is the sum of the number of i's, s's, and vowels in Mississippi riverboats?
+A: 4 (i's) + 4 (s's) + 8 (vowels) = 16
